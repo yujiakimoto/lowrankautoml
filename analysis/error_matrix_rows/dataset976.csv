@@ -1,0 +1,187 @@
+,error,time
+"{'hyperparameters': {'P': 1, 'k': 1}, 'algorithm': 'kNN'}",0.0026257627720830843,122.18890428543091
+"{'hyperparameters': {'P': 1, 'k': 3}, 'algorithm': 'kNN'}",0.005937233979816861,379.64808416366577
+"{'hyperparameters': {'P': 1, 'k': 5}, 'algorithm': 'kNN'}",0.01217882528940933,383.12122988700867
+"{'hyperparameters': {'P': 1, 'k': 7}, 'algorithm': 'kNN'}",0.014810573516027405,383.40909337997437
+"{'hyperparameters': {'P': 1, 'k': 9}, 'algorithm': 'kNN'}",0.018715637516451895,402.4153423309326
+"{'hyperparameters': {'P': 1, 'k': 11}, 'algorithm': 'kNN'}",0.020905190878608884,478.8040566444397
+"{'hyperparameters': {'P': 1, 'k': 13}, 'algorithm': 'kNN'}",0.02400070410769917,440.5919933319092
+"{'hyperparameters': {'P': 1, 'k': 15}, 'algorithm': 'kNN'}",0.025371882622521845,444.61098289489746
+"{'hyperparameters': {'P': 2, 'k': 1}, 'algorithm': 'kNN'}",0.0022437679401677902,5.506175994873047
+"{'hyperparameters': {'P': 2, 'k': 3}, 'algorithm': 'kNN'}",0.005937705759054804,29.868380069732666
+"{'hyperparameters': {'P': 2, 'k': 5}, 'algorithm': 'kNN'}",0.015371182093949701,81.74297881126404
+"{'hyperparameters': {'P': 2, 'k': 7}, 'algorithm': 'kNN'}",0.018095254920091362,149.71075248718262
+"{'hyperparameters': {'P': 2, 'k': 9}, 'algorithm': 'kNN'}",0.020326888912954654,121.17899632453918
+"{'hyperparameters': {'P': 2, 'k': 11}, 'algorithm': 'kNN'}",0.021726229628655377,170.08455681800842
+"{'hyperparameters': {'P': 2, 'k': 13}, 'algorithm': 'kNN'}",0.02291034813968686,119.89858722686768
+"{'hyperparameters': {'P': 2, 'k': 15}, 'algorithm': 'kNN'}",0.023729875637658722,228.74196696281433
+"{'hyperparameters': {'min_samples_split': 2}, 'algorithm': 'CART'}",0.04867221430775226,53.40010070800781
+"{'hyperparameters': {'min_samples_split': 4}, 'algorithm': 'CART'}",0.05086377252556966,58.56789445877075
+"{'hyperparameters': {'min_samples_split': 8}, 'algorithm': 'CART'}",0.05213531743313167,35.028374671936035
+"{'hyperparameters': {'min_samples_split': 16}, 'algorithm': 'CART'}",0.05663418286499795,51.62005066871643
+"{'hyperparameters': {'min_samples_split': 32}, 'algorithm': 'CART'}",0.05953879900920005,61.51217341423035
+"{'hyperparameters': {'min_samples_split': 64}, 'algorithm': 'CART'}",0.08255536070997609,59.340893030166626
+"{'hyperparameters': {'min_samples_split': 128}, 'algorithm': 'CART'}",0.09437597314625101,43.92928194999695
+"{'hyperparameters': {'min_samples_split': 256}, 'algorithm': 'CART'}",0.09977102340894874,50.835196018218994
+"{'hyperparameters': {'min_samples_split': 512}, 'algorithm': 'CART'}",0.11135184114305459,53.318032026290894
+"{'hyperparameters': {'min_samples_split': 1024}, 'algorithm': 'CART'}",0.13080994278665992,15.233361721038818
+"{'hyperparameters': {'max_depth': 3, 'learning_rate': 0.01, 'max_features': None}, 'algorithm': 'GB'}",0.16815897975735483,1874.4991507530212
+"{'hyperparameters': {'max_depth': 3, 'learning_rate': 0.01, 'max_features': 'log2'}, 'algorithm': 'GB'}",0.2605078942591706,1059.5258758068085
+"{'hyperparameters': {'max_depth': 3, 'learning_rate': 0.025, 'max_features': None}, 'algorithm': 'GB'}",0.09762385961967128,1915.466826915741
+"{'hyperparameters': {'max_depth': 3, 'learning_rate': 0.025, 'max_features': 'log2'}, 'algorithm': 'GB'}",0.09194284853965434,1099.5058853626251
+"{'hyperparameters': {'max_depth': 3, 'learning_rate': 0.05, 'max_features': None}, 'algorithm': 'GB'}",0.056380514318235354,1939.5955333709717
+"{'hyperparameters': {'max_depth': 3, 'learning_rate': 0.05, 'max_features': 'log2'}, 'algorithm': 'GB'}",0.062278042515597,1113.3086936473846
+"{'hyperparameters': {'max_depth': 3, 'learning_rate': 0.1, 'max_features': None}, 'algorithm': 'GB'}",0.041673481619966826,1958.143987417221
+"{'hyperparameters': {'max_depth': 3, 'learning_rate': 0.1, 'max_features': 'log2'}, 'algorithm': 'GB'}",0.04537480718456506,1096.4310865402222
+"{'hyperparameters': {'max_depth': 3, 'learning_rate': 0.25, 'max_features': None}, 'algorithm': 'GB'}",0.030491146846668083,1915.3155345916748
+"{'hyperparameters': {'max_depth': 3, 'learning_rate': 0.25, 'max_features': 'log2'}, 'algorithm': 'GB'}",0.03144581452962404,1081.7211697101593
+"{'hyperparameters': {'max_depth': 3, 'learning_rate': 0.5, 'max_features': None}, 'algorithm': 'GB'}",0.024806279865528406,1910.7030198574066
+"{'hyperparameters': {'max_depth': 3, 'learning_rate': 0.5, 'max_features': 'log2'}, 'algorithm': 'GB'}",0.02541976351968785,1064.6114249229431
+"{'hyperparameters': {'max_depth': 6, 'learning_rate': 0.01, 'max_features': None}, 'algorithm': 'GB'}",0.08357140597670012,2889.4673759937286
+"{'hyperparameters': {'max_depth': 6, 'learning_rate': 0.01, 'max_features': 'log2'}, 'algorithm': 'GB'}",0.11534800147561337,1729.4801454544067
+"{'hyperparameters': {'max_depth': 6, 'learning_rate': 0.025, 'max_features': None}, 'algorithm': 'GB'}",0.04777667567850512,2965.407565355301
+"{'hyperparameters': {'max_depth': 6, 'learning_rate': 0.025, 'max_features': 'log2'}, 'algorithm': 'GB'}",0.04769861780368613,1746.6140489578247
+"{'hyperparameters': {'max_depth': 6, 'learning_rate': 0.05, 'max_features': None}, 'algorithm': 'GB'}",0.03331992992217758,2971.705418586731
+"{'hyperparameters': {'max_depth': 6, 'learning_rate': 0.05, 'max_features': 'log2'}, 'algorithm': 'GB'}",0.03395311052482171,1700.3340303897858
+"{'hyperparameters': {'max_depth': 6, 'learning_rate': 0.1, 'max_features': None}, 'algorithm': 'GB'}",0.02670453725863895,3071.241413116455
+"{'hyperparameters': {'max_depth': 6, 'learning_rate': 0.1, 'max_features': 'log2'}, 'algorithm': 'GB'}",0.027441000989887897,1687.8036091327667
+"{'hyperparameters': {'max_depth': 6, 'learning_rate': 0.25, 'max_features': None}, 'algorithm': 'GB'}",0.022851682435515774,3007.47149515152
+"{'hyperparameters': {'max_depth': 6, 'learning_rate': 0.25, 'max_features': 'log2'}, 'algorithm': 'GB'}",0.022122627604392202,1661.1224057674408
+"{'hyperparameters': {'max_depth': 6, 'learning_rate': 0.5, 'max_features': None}, 'algorithm': 'GB'}",0.023237338532193307,2142.6909272670746
+"{'hyperparameters': {'max_depth': 6, 'learning_rate': 0.5, 'max_features': 'log2'}, 'algorithm': 'GB'}",0.022278913751347905,1301.323640346527
+"{'hyperparameters': {'C': 0.125}, 'algorithm': 'lSVM'}",0.073517577374906,5.539475917816162
+"{'hyperparameters': {'C': 0.25}, 'algorithm': 'lSVM'}",0.07336069464882655,9.309006690979004
+"{'hyperparameters': {'C': 0.5}, 'algorithm': 'lSVM'}",0.07297642456848971,66.95650863647461
+"{'hyperparameters': {'C': 1}, 'algorithm': 'lSVM'}",0.0727127248535705,242.4311716556549
+"{'hyperparameters': {'C': 2}, 'algorithm': 'lSVM'}",0.0727127248535705,253.1891176700592
+"{'hyperparameters': {'C': 4}, 'algorithm': 'lSVM'}",0.0727127248535705,377.38544607162476
+"{'hyperparameters': {'C': 8}, 'algorithm': 'lSVM'}",0.07265841217479733,346.266893863678
+"{'hyperparameters': {'C': 16}, 'algorithm': 'lSVM'}",0.07477125696327841,436.8305764198303
+"{'hyperparameters': {'coef0': 0, 'C': 0.125, 'kernel': 'rbf'}, 'algorithm': 'kSVM'}",0.03801583151143123,952.0075743198395
+"{'hyperparameters': {'coef0': 0, 'C': 0.125, 'kernel': 'poly'}, 'algorithm': 'kSVM'}",0.07675942777688435,672.7383618354797
+"{'hyperparameters': {'coef0': 0, 'C': 0.25, 'kernel': 'rbf'}, 'algorithm': 'kSVM'}",0.03043589946070353,784.6296117305756
+"{'hyperparameters': {'coef0': 0, 'C': 0.25, 'kernel': 'poly'}, 'algorithm': 'kSVM'}",0.059513475258735224,627.6243867874146
+"{'hyperparameters': {'coef0': 0, 'C': 0.5, 'kernel': 'rbf'}, 'algorithm': 'kSVM'}",0.024569654440748864,756.1306419372559
+"{'hyperparameters': {'coef0': 0, 'C': 0.5, 'kernel': 'poly'}, 'algorithm': 'kSVM'}",0.048375178439162836,563.0403802394867
+"{'hyperparameters': {'coef0': 0, 'C': 1, 'kernel': 'rbf'}, 'algorithm': 'kSVM'}",0.020534000617436477,658.9725911617279
+"{'hyperparameters': {'coef0': 0, 'C': 1, 'kernel': 'poly'}, 'algorithm': 'kSVM'}",0.03481121407293582,497.45206594467163
+"{'hyperparameters': {'coef0': 0, 'C': 2, 'kernel': 'rbf'}, 'algorithm': 'kSVM'}",0.014450170437184745,583.7082540988922
+"{'hyperparameters': {'coef0': 0, 'C': 2, 'kernel': 'poly'}, 'algorithm': 'kSVM'}",0.030428829205868268,478.08816385269165
+"{'hyperparameters': {'coef0': 0, 'C': 4, 'kernel': 'rbf'}, 'algorithm': 'kSVM'}",0.01297750803728292,556.7851805686951
+"{'hyperparameters': {'coef0': 0, 'C': 4, 'kernel': 'poly'}, 'algorithm': 'kSVM'}",0.02264755590574384,477.4462869167328
+"{'hyperparameters': {'coef0': 0, 'C': 8, 'kernel': 'rbf'}, 'algorithm': 'kSVM'}",0.010915650163252752,528.1999661922455
+"{'hyperparameters': {'coef0': 0, 'C': 8, 'kernel': 'poly'}, 'algorithm': 'kSVM'}",0.019758805672618823,477.6850435733795
+"{'hyperparameters': {'coef0': 0, 'C': 16, 'kernel': 'rbf'}, 'algorithm': 'kSVM'}",0.009873853698392322,524.269549369812
+"{'hyperparameters': {'coef0': 0, 'C': 16, 'kernel': 'poly'}, 'algorithm': 'kSVM'}",0.018999678343311788,449.4108738899231
+"{'hyperparameters': {'coef0': 10, 'C': 0.125, 'kernel': 'rbf'}, 'algorithm': 'kSVM'}",0.03801583151143123,932.9718804359436
+"{'hyperparameters': {'coef0': 10, 'C': 0.125, 'kernel': 'poly'}, 'algorithm': 'kSVM'}",0.019040561956146364,513.7525451183319
+"{'hyperparameters': {'coef0': 10, 'C': 0.25, 'kernel': 'rbf'}, 'algorithm': 'kSVM'}",0.03043589946070353,815.6776964664459
+"{'hyperparameters': {'coef0': 10, 'C': 0.25, 'kernel': 'poly'}, 'algorithm': 'kSVM'}",0.017691490352938283,552.9704966545105
+"{'hyperparameters': {'coef0': 10, 'C': 0.5, 'kernel': 'rbf'}, 'algorithm': 'kSVM'}",0.024569654440748864,710.4094831943512
+"{'hyperparameters': {'coef0': 10, 'C': 0.5, 'kernel': 'poly'}, 'algorithm': 'kSVM'}",0.01606087469614769,658.6738514900208
+"{'hyperparameters': {'coef0': 10, 'C': 1, 'kernel': 'rbf'}, 'algorithm': 'kSVM'}",0.020534000617436477,655.0413680076599
+"{'hyperparameters': {'coef0': 10, 'C': 1, 'kernel': 'poly'}, 'algorithm': 'kSVM'}",0.013445890898300639,782.9972140789032
+"{'hyperparameters': {'coef0': 10, 'C': 2, 'kernel': 'rbf'}, 'algorithm': 'kSVM'}",0.014450170437184745,574.7350685596466
+"{'hyperparameters': {'coef0': 10, 'C': 2, 'kernel': 'poly'}, 'algorithm': 'kSVM'}",0.01306698403484811,960.4492611885071
+"{'hyperparameters': {'coef0': 10, 'C': 4, 'kernel': 'rbf'}, 'algorithm': 'kSVM'}",0.01297750803728292,580.3684504032135
+"{'hyperparameters': {'coef0': 10, 'C': 4, 'kernel': 'poly'}, 'algorithm': 'kSVM'}",0.010869040740064955,1086.6343019008636
+"{'hyperparameters': {'coef0': 10, 'C': 8, 'kernel': 'rbf'}, 'algorithm': 'kSVM'}",0.010915650163252752,540.5222411155701
+"{'hyperparameters': {'coef0': 10, 'C': 8, 'kernel': 'poly'}, 'algorithm': 'kSVM'}",0.010750955531407477,1249.6192915439606
+"{'hyperparameters': {'coef0': 10, 'C': 16, 'kernel': 'rbf'}, 'algorithm': 'kSVM'}",0.009873853698392322,536.5324037075043
+"{'hyperparameters': {'coef0': 10, 'C': 16, 'kernel': 'poly'}, 'algorithm': 'kSVM'}",0.010161777712242238,1445.2703742980957
+"{'hyperparameters': {'C': 0.25, 'Solver': 'liblinear', 'penalty': 'l1'}, 'algorithm': 'Logit'}",0.07351524882591276,116.15754318237305
+"{'hyperparameters': {'C': 0.25, 'Solver': 'liblinear', 'penalty': 'l2'}, 'algorithm': 'Logit'}",0.07448540223181359,25.44873833656311
+"{'hyperparameters': {'C': 0.25, 'Solver': 'saga', 'penalty': 'l1'}, 'algorithm': 'Logit'}",0.07289024882591276,155.33623123168945
+"{'hyperparameters': {'C': 0.25, 'Solver': 'saga', 'penalty': 'l2'}, 'algorithm': 'Logit'}",0.07418913925584418,120.58830118179321
+"{'hyperparameters': {'C': 0.5, 'Solver': 'liblinear', 'penalty': 'l1'}, 'algorithm': 'Logit'}",0.07280119968170924,139.5279188156128
+"{'hyperparameters': {'C': 0.5, 'Solver': 'liblinear', 'penalty': 'l2'}, 'algorithm': 'Logit'}",0.07378581758698807,28.528339624404907
+"{'hyperparameters': {'C': 0.5, 'Solver': 'saga', 'penalty': 'l1'}, 'algorithm': 'Logit'}",0.07311967101928886,216.605375289917
+"{'hyperparameters': {'C': 0.5, 'Solver': 'saga', 'penalty': 'l2'}, 'algorithm': 'Logit'}",0.07319766706130768,140.6844847202301
+"{'hyperparameters': {'C': 0.75, 'Solver': 'liblinear', 'penalty': 'l1'}, 'algorithm': 'Logit'}",0.07226427464374005,135.54775476455688
+"{'hyperparameters': {'C': 0.75, 'Solver': 'liblinear', 'penalty': 'l2'}, 'algorithm': 'Logit'}",0.07349737507721263,38.10733366012573
+"{'hyperparameters': {'C': 0.75, 'Solver': 'saga', 'penalty': 'l1'}, 'algorithm': 'Logit'}",0.07254836555283095,178.58639335632324
+"{'hyperparameters': {'C': 0.75, 'Solver': 'saga', 'penalty': 'l2'}, 'algorithm': 'Logit'}",0.07397492327226443,163.427490234375
+"{'hyperparameters': {'C': 1, 'Solver': 'liblinear', 'penalty': 'l1'}, 'algorithm': 'Logit'}",0.07205950770560682,132.4602198600769
+"{'hyperparameters': {'C': 1, 'Solver': 'liblinear', 'penalty': 'l2'}, 'algorithm': 'Logit'}",0.07317269907281673,37.01913142204285
+"{'hyperparameters': {'C': 1, 'Solver': 'saga', 'penalty': 'l1'}, 'algorithm': 'Logit'}",0.07205950770560682,225.43860054016113
+"{'hyperparameters': {'C': 1, 'Solver': 'saga', 'penalty': 'l2'}, 'algorithm': 'Logit'}",0.07365039000918702,191.18291330337524
+"{'hyperparameters': {'C': 1.5, 'Solver': 'liblinear', 'penalty': 'l1'}, 'algorithm': 'Logit'}",0.0727118109522497,152.82664489746094
+"{'hyperparameters': {'C': 1.5, 'Solver': 'liblinear', 'penalty': 'l2'}, 'algorithm': 'Logit'}",0.07291650677492273,39.255526304244995
+"{'hyperparameters': {'C': 1.5, 'Solver': 'saga', 'penalty': 'l1'}, 'algorithm': 'Logit'}",0.07237397311441185,247.1190390586853
+"{'hyperparameters': {'C': 1.5, 'Solver': 'saga', 'penalty': 'l2'}, 'algorithm': 'Logit'}",0.0725322366945859,206.16027235984802
+"{'hyperparameters': {'C': 2, 'Solver': 'liblinear', 'penalty': 'l1'}, 'algorithm': 'Logit'}",0.0727118109522497,153.19512391090393
+"{'hyperparameters': {'C': 2, 'Solver': 'liblinear', 'penalty': 'l2'}, 'algorithm': 'Logit'}",0.0727118109522497,33.63059091567993
+"{'hyperparameters': {'C': 2, 'Solver': 'saga', 'penalty': 'l1'}, 'algorithm': 'Logit'}",0.0723150108502609,221.33155870437622
+"{'hyperparameters': {'C': 2, 'Solver': 'saga', 'penalty': 'l2'}, 'algorithm': 'Logit'}",0.07265221619658821,201.98333978652954
+"{'hyperparameters': {'C': 3, 'Solver': 'liblinear', 'penalty': 'l1'}, 'algorithm': 'Logit'}",0.07265284868809876,129.323260307312
+"{'hyperparameters': {'C': 3, 'Solver': 'liblinear', 'penalty': 'l2'}, 'algorithm': 'Logit'}",0.0727118109522497,37.81923866271973
+"{'hyperparameters': {'C': 3, 'Solver': 'saga', 'penalty': 'l1'}, 'algorithm': 'Logit'}",0.07271251455922048,250.19129943847656
+"{'hyperparameters': {'C': 3, 'Solver': 'saga', 'penalty': 'l2'}, 'algorithm': 'Logit'}",0.0729673140969038,193.35414361953735
+"{'hyperparameters': {'C': 4, 'Solver': 'liblinear', 'penalty': 'l1'}, 'algorithm': 'Logit'}",0.0729673140969038,153.4268298149109
+"{'hyperparameters': {'C': 4, 'Solver': 'liblinear', 'penalty': 'l2'}, 'algorithm': 'Logit'}",0.0729673140969038,45.881994009017944
+"{'hyperparameters': {'C': 4, 'Solver': 'saga', 'penalty': 'l1'}, 'algorithm': 'Logit'}",0.07302697996802551,240.16230130195618
+"{'hyperparameters': {'C': 4, 'Solver': 'saga', 'penalty': 'l2'}, 'algorithm': 'Logit'}",0.0729673140969038,208.79080414772034
+"{'hyperparameters': {}, 'algorithm': 'Percep'}",0.08277563021877873,9.195078372955322
+"{'hyperparameters': {}, 'algorithm': 'GNB'}",0.07443281048088665,1.0451562404632568
+"{'hyperparameters': {'criterion': 'gini', 'min_samples_split': 2}, 'algorithm': 'RF'}",0.027559120109605838,2177.0676004886627
+"{'hyperparameters': {'criterion': 'gini', 'min_samples_split': 4}, 'algorithm': 'RF'}",0.02984412063040783,2189.7557561397552
+"{'hyperparameters': {'criterion': 'gini', 'min_samples_split': 8}, 'algorithm': 'RF'}",0.03411433176035249,2187.4698600769043
+"{'hyperparameters': {'criterion': 'gini', 'min_samples_split': 16}, 'algorithm': 'RF'}",0.03846074232805757,2172.1395943164825
+"{'hyperparameters': {'criterion': 'gini', 'min_samples_split': 32}, 'algorithm': 'RF'}",0.04441300100166645,2170.3592092990875
+"{'hyperparameters': {'criterion': 'gini', 'min_samples_split': 64}, 'algorithm': 'RF'}",0.05707113278814596,2129.821708679199
+"{'hyperparameters': {'criterion': 'gini', 'min_samples_split': 128}, 'algorithm': 'RF'}",0.0691714033644849,2101.491604089737
+"{'hyperparameters': {'criterion': 'gini', 'min_samples_split': 256}, 'algorithm': 'RF'}",0.08792374657416371,2021.9823095798492
+"{'hyperparameters': {'criterion': 'gini', 'min_samples_split': 512}, 'algorithm': 'RF'}",0.12150000800269171,1974.0917699337006
+"{'hyperparameters': {'criterion': 'gini', 'min_samples_split': 1024}, 'algorithm': 'RF'}",0.16978319613211737,1853.0518140792847
+"{'hyperparameters': {'criterion': 'entropy', 'min_samples_split': 2}, 'algorithm': 'RF'}",0.02580160474425009,2542.623608350754
+"{'hyperparameters': {'criterion': 'entropy', 'min_samples_split': 4}, 'algorithm': 'RF'}",0.02707962440597363,2409.2211017608643
+"{'hyperparameters': {'criterion': 'entropy', 'min_samples_split': 8}, 'algorithm': 'RF'}",0.029756827915326235,2533.225804567337
+"{'hyperparameters': {'criterion': 'entropy', 'min_samples_split': 16}, 'algorithm': 'RF'}",0.03443226194016807,2499.5282356739044
+"{'hyperparameters': {'criterion': 'entropy', 'min_samples_split': 32}, 'algorithm': 'RF'}",0.04117093968612108,2482.3314909934998
+"{'hyperparameters': {'criterion': 'entropy', 'min_samples_split': 64}, 'algorithm': 'RF'}",0.052408350271298934,2442.9515907764435
+"{'hyperparameters': {'criterion': 'entropy', 'min_samples_split': 128}, 'algorithm': 'RF'}",0.06078932162597715,2402.171436548233
+"{'hyperparameters': {'criterion': 'entropy', 'min_samples_split': 256}, 'algorithm': 'RF'}",0.07417202916872234,2335.9167370796204
+"{'hyperparameters': {'criterion': 'entropy', 'min_samples_split': 512}, 'algorithm': 'RF'}",0.10196490905841119,2300.5120038986206
+"{'hyperparameters': {'criterion': 'entropy', 'min_samples_split': 1024}, 'algorithm': 'RF'}",0.14169920767407138,2148.170619249344
+"{'hyperparameters': {'criterion': 'gini', 'min_samples_split': 2}, 'algorithm': 'ExtraTrees'}",0.012311630917124033,1214.0258553028107
+"{'hyperparameters': {'criterion': 'gini', 'min_samples_split': 4}, 'algorithm': 'ExtraTrees'}",0.018983487647917772,1227.8119530677795
+"{'hyperparameters': {'criterion': 'gini', 'min_samples_split': 8}, 'algorithm': 'ExtraTrees'}",0.02558436096918581,1200.842402458191
+"{'hyperparameters': {'criterion': 'gini', 'min_samples_split': 16}, 'algorithm': 'ExtraTrees'}",0.034804494155078906,1154.8312702178955
+"{'hyperparameters': {'criterion': 'gini', 'min_samples_split': 32}, 'algorithm': 'ExtraTrees'}",0.04852512818114496,1181.7710814476013
+"{'hyperparameters': {'criterion': 'gini', 'min_samples_split': 64}, 'algorithm': 'ExtraTrees'}",0.06220142059922308,1172.636426448822
+"{'hyperparameters': {'criterion': 'gini', 'min_samples_split': 128}, 'algorithm': 'ExtraTrees'}",0.08158219501936323,1174.9638149738312
+"{'hyperparameters': {'criterion': 'gini', 'min_samples_split': 256}, 'algorithm': 'ExtraTrees'}",0.11375169558991069,1103.2117462158203
+"{'hyperparameters': {'criterion': 'gini', 'min_samples_split': 512}, 'algorithm': 'ExtraTrees'}",0.18139515862431113,1064.608743429184
+"{'hyperparameters': {'criterion': 'gini', 'min_samples_split': 1024}, 'algorithm': 'ExtraTrees'}",0.2923595712398036,1017.1377017498016
+"{'hyperparameters': {'criterion': 'entropy', 'min_samples_split': 2}, 'algorithm': 'ExtraTrees'}",0.015049539731127132,1270.7219564914703
+"{'hyperparameters': {'criterion': 'entropy', 'min_samples_split': 4}, 'algorithm': 'ExtraTrees'}",0.018914928083571335,1231.011488199234
+"{'hyperparameters': {'criterion': 'entropy', 'min_samples_split': 8}, 'algorithm': 'ExtraTrees'}",0.024500447921200725,1198.9102177619934
+"{'hyperparameters': {'criterion': 'entropy', 'min_samples_split': 16}, 'algorithm': 'ExtraTrees'}",0.03291564195971618,1184.5914769172668
+"{'hyperparameters': {'criterion': 'entropy', 'min_samples_split': 32}, 'algorithm': 'ExtraTrees'}",0.04712891566522955,1213.2582712173462
+"{'hyperparameters': {'criterion': 'entropy', 'min_samples_split': 64}, 'algorithm': 'ExtraTrees'}",0.06033782476337327,1140.0997998714447
+"{'hyperparameters': {'criterion': 'entropy', 'min_samples_split': 128}, 'algorithm': 'ExtraTrees'}",0.07735174304417518,1161.9841408729553
+"{'hyperparameters': {'criterion': 'entropy', 'min_samples_split': 256}, 'algorithm': 'ExtraTrees'}",0.10887895832284511,1077.1867883205414
+"{'hyperparameters': {'criterion': 'entropy', 'min_samples_split': 512}, 'algorithm': 'ExtraTrees'}",0.17090449617643602,1095.9642796516418
+"{'hyperparameters': {'criterion': 'entropy', 'min_samples_split': 1024}, 'algorithm': 'ExtraTrees'}",0.2859262554523375,998.8917722702026
+"{'hyperparameters': {'n_estimators': 50, 'learning_rate': 1.0}, 'algorithm': 'ABT'}",0.04637178006586917,1561.785101890564
+"{'hyperparameters': {'n_estimators': 50, 'learning_rate': 1.5}, 'algorithm': 'ABT'}",0.046990590309532544,1624.9772164821625
+"{'hyperparameters': {'n_estimators': 50, 'learning_rate': 2.0}, 'algorithm': 'ABT'}",0.8293103049533066,1609.4722962379456
+"{'hyperparameters': {'n_estimators': 50, 'learning_rate': 2.5}, 'algorithm': 'ABT'}",0.5004335210535134,1134.0288879871368
+"{'hyperparameters': {'n_estimators': 50, 'learning_rate': 3.0}, 'algorithm': 'ABT'}",0.5,796.8715724945068
+"{'hyperparameters': {'n_estimators': 100, 'learning_rate': 1.0}, 'algorithm': 'ABT'}",0.041332479866812565,2651.008338689804
+"{'hyperparameters': {'n_estimators': 100, 'learning_rate': 1.5}, 'algorithm': 'ABT'}",0.038354795146837525,2670.1723363399506
+"{'hyperparameters': {'n_estimators': 100, 'learning_rate': 2.0}, 'algorithm': 'ABT'}",0.8228251287926586,2637.633378267288
+"{'hyperparameters': {'n_estimators': 100, 'learning_rate': 2.5}, 'algorithm': 'ABT'}",0.5004335210535134,1688.691915512085
+"{'hyperparameters': {'n_estimators': 100, 'learning_rate': 3.0}, 'algorithm': 'ABT'}",0.5,1206.5057003498077
+"{'hyperparameters': {'learning_rate': 0.0001, 'alpha': 0.0001, 'solver': 'sgd'}, 'algorithm': 'MLP'}",0.5459026177329259,173.8409538269043
+"{'hyperparameters': {'learning_rate': 0.0001, 'alpha': 0.0001, 'solver': 'adam'}, 'algorithm': 'MLP'}",0.4910614392024687,232.47249293327332
+"{'hyperparameters': {'learning_rate': 0.0001, 'alpha': 0.01, 'solver': 'sgd'}, 'algorithm': 'MLP'}",0.5459026177329259,187.99460172653198
+"{'hyperparameters': {'learning_rate': 0.0001, 'alpha': 0.01, 'solver': 'adam'}, 'algorithm': 'MLP'}",0.4910614392024687,208.16903519630432
+"{'hyperparameters': {'learning_rate': 0.001, 'alpha': 0.0001, 'solver': 'sgd'}, 'algorithm': 'MLP'}",0.46290832761846595,192.8784794807434
+"{'hyperparameters': {'learning_rate': 0.001, 'alpha': 0.0001, 'solver': 'adam'}, 'algorithm': 'MLP'}",0.22568118385642671,204.12744307518005
+"{'hyperparameters': {'learning_rate': 0.001, 'alpha': 0.01, 'solver': 'sgd'}, 'algorithm': 'MLP'}",0.46290832761846595,174.18591284751892
+"{'hyperparameters': {'learning_rate': 0.001, 'alpha': 0.01, 'solver': 'adam'}, 'algorithm': 'MLP'}",0.22568118385642671,222.69475841522217
+"{'hyperparameters': {'learning_rate': 0.01, 'alpha': 0.0001, 'solver': 'sgd'}, 'algorithm': 'MLP'}",0.18343737766437265,206.14782333374023
+"{'hyperparameters': {'learning_rate': 0.01, 'alpha': 0.0001, 'solver': 'adam'}, 'algorithm': 'MLP'}",0.04327611905660161,201.45033073425293
+"{'hyperparameters': {'learning_rate': 0.01, 'alpha': 0.01, 'solver': 'sgd'}, 'algorithm': 'MLP'}",0.18343737766437265,292.68505668640137
+"{'hyperparameters': {'learning_rate': 0.01, 'alpha': 0.01, 'solver': 'adam'}, 'algorithm': 'MLP'}",0.04321249748927737,229.26228713989258
