@@ -4,7 +4,7 @@ setup(
         name="lowrankautoml",
         version="0.1",
         author="Yuji Akimoto, Chengrun Yang, Dae Won Kim",
-        author_email="cy438@cornell.edu",
+        author_email="ya242@cornell.edu",
         packages=["automl"],
         package_dir={"automl":"automl"},
         url="https://github.com/yujiakimoto/lowrankautoml/",
