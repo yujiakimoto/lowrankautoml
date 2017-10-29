@@ -8,13 +8,13 @@ import time
 class AutoLearner:
     
     def __init__(self, selected_algorithms='all', selected_hyperparameters='default', ensemble_size=3, 
-                 ensemble_method='Logit', error_matrix_values='default', verbose=True):
+                 ensemble_method='Logit', error_matrix_values='default', n_cores=None, verbose=True):
         """instantiates an AutoLearner object """
 
-        self.error_matrix = ErrorMatrix(selected_algorithms, selected_hyperparameters, ensemble_size, error_matrix_values, verbose)
+        self.error_matrix = ErrorMatrix(selected_algorithms, selected_hyperparameters, ensemble_size, error_matrix_values, verbose, n_cores)
         """error matrix defined for specific dataset"""
         
-        self.ensemble = Ensemble(ensemble_size=ensemble_size, ensemble_method=ensemble_method, verbose=verbose)
+        self.ensemble = Ensemble(ensemble_size, ensemble_method, verbose, n_cores)
         """instantiate empty ensemble object"""
         
     def fit(self, train_features, train_labels, categorical):        

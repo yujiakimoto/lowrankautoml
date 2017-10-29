@@ -13,7 +13,7 @@ from scipy.linalg import qr
 
 class ErrorMatrix:
     
-    def __init__(self, selected_algorithms, selected_hyperparameters, ensemble_size, error_matrix_values, verbose):
+    def __init__(self, selected_algorithms, selected_hyperparameters, ensemble_size, error_matrix_values, verbose, n_cores):
         """instantiates an error matrix object given values"""
         
         self.values_default = (error_matrix_values == 'default')
@@ -55,6 +55,9 @@ class ErrorMatrix:
         
         self.verbose = verbose
         """whether to generate print statements"""  
+        
+        self.n_cores = n_cores
+        """the number of cores to use per autolearner object"""
     
     def generate_settings(self, i):
         settings = {'algorithm':self.headings[0][i], 
@@ -65,7 +68,7 @@ class ErrorMatrix:
     
     def add_dataset(self, train_features, train_labels):
         """compute error values for r entries as identified by pivoted QR factorization"""
-        p1 = mp.Pool()
+        p1 = mp.Pool(self.n_cores)
         a1 = [p1.apply_async(self.compute_entry, args=[train_features, train_labels, i]) for i in self.computed_indices]
         p1.close()
         p1.join()
@@ -75,7 +78,7 @@ class ErrorMatrix:
         unknown = np.setdiff1d(np.arange(self.values.shape[1]), self.computed_indices)
         self.new_row[:,unknown] = approx_row[:,unknown]
         candidate_indices = self.new_row.argsort()[0][:5]
-        p2 = mp.Pool()
+        p2 = mp.Pool(self.n_cores)
         a2 = [p2.apply_async(self.compute_entry, args=(train_features, train_labels, i)) for i in candidate_indices if
              i not in self.computed_indices]
         for i in range(len(a2)):

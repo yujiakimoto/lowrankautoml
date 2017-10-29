@@ -1,6 +1,5 @@
 import ML_algorithms as ml
 import util
-import multiprocessing
 import numpy as np
 
 from smac.configspace import ConfigurationSpace

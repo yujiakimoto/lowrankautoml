@@ -6,7 +6,7 @@ from pathos.multiprocessing import ProcessingPool as Pool
 
 class Ensemble:
     
-    def __init__(self, ensemble_size, ensemble_method, verbose):
+    def __init__(self, ensemble_size, ensemble_method, verbose, n_cores):
         """instantiates an ensemble object given a list of model objects to ensemble"""
     
         self.current_size = 0
@@ -22,11 +22,13 @@ class Ensemble:
         """the stacking algorithm used in the second layer"""
         
         # self.model = Model({'algorithm':ensemble_method, 'hyperparameters':{'C': 1.0}}, verbose=verbose)
-        #self.model = Model({'algorithm':'GB', 'hyperparameters':{'learning_rate': 0.1}}, verbose=verbose)
-        self.model = Model({'algorithm':'Logit', 'hyperparameters':{'C':1.0, 'Penalty': 'l1'}}, verbose=verbose)
+        self.model = Model({'algorithm':'GB', 'hyperparameters':{'learning_rate': 0.1}}, verbose=verbose)
         
         self.base_learners = []        
-        """a list of base learner candidates for constructing the ensemble"""      
+        """a list of base learner candidates for constructing the ensemble"""   
+        
+        self.n_cores = n_cores
+        """the number of cores to use per autolearner object"""
         
     def add_learner(self, model):
         """method to add a model object as an ensemble"""
@@ -39,14 +41,16 @@ class Ensemble:
     
     def bayesian_optimize(self):
         """conduct bayesian optimization on each individual model within the ensemble"""
-        p = Pool()
+        p = Pool(self.n_cores)
         optimized_models = p.map(Model.bayesian_optimize, self.base_learners)
         for i in range(self.current_size):
             self.base_learners[i] = optimized_models[i]
+        p.close()
+        p.join()
     
     def fit_base_learners(self, train_features, train_labels):        
         """fit the base learners to given features and labels"""
-        p = mp.Pool()
+        p = mp.Pool(self.n_cores)
         a = [p.apply_async(Model.fit, args=(model, train_features, train_labels)) for model in self.base_learners]
         p.close()
         p.join()
