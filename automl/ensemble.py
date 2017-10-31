@@ -45,8 +45,6 @@ class Ensemble:
         optimized_models = p.map(Model.bayesian_optimize, self.base_learners)
         for i in range(self.current_size):
             self.base_learners[i] = optimized_models[i]
-        p.close()
-        p.join()
     
     def fit_base_learners(self, train_features, train_labels):        
         """fit the base learners to given features and labels"""
