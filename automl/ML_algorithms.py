@@ -137,9 +137,9 @@ def kSVM(data_numeric, data_labels, C=1.0, num_splits=10, Kernel='rbf', Error_ty
         print("KernelSVM finished (", C, ")"+  str(data_numeric.shape))
     return Error_Aver, Predictions, clf
 
-def Logit(data_numeric, data_labels, C=1.0, num_splits=10, Penalty='l2', Error_type='ClassAverage', verbose=True):
+def Logit(data_numeric, data_labels, C=1.0, num_splits=10, penalty='l2', Error_type='ClassAverage', verbose=True):
  
-    clf = LogisticRegression(C=C, penalty=Penalty)
+    clf = LogisticRegression(C=C, penalty=penalty)
     Error_Aver, Predictions = kfolderror(data_numeric, data_labels, clf, num_splits)
     if verbose:
         print("Logit finished (", C, ")"+  str(data_numeric.shape))

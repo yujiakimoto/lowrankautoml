@@ -5,7 +5,7 @@ from scipy.linalg import qr
 
 def approx_rank(A):
     singularValues = np.linalg.svd(A, compute_uv=False)
-    rank = singularValues[singularValues >= 0.01*singularValues[0]]
+    rank = singularValues[singularValues >= 0.03*singularValues[0]]
     return rank.size
 
 def pivoted_qr(A):

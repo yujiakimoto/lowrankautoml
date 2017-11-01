@@ -21,8 +21,8 @@ class Ensemble:
         self.ensemble_method = ensemble_method
         """the stacking algorithm used in the second layer"""
         
-        # self.model = Model({'algorithm':ensemble_method, 'hyperparameters':{'C': 1.0}}, verbose=verbose)
-        self.model = Model({'algorithm':'GB', 'hyperparameters':{'learning_rate': 0.1}}, verbose=verbose)
+        self.model = Model({'algorithm':ensemble_method, 'hyperparameters':{'C': 1.0, 'penalty': 'l1'}}, verbose=verbose)
+        """the model object to be used as the stacking algorithm"""
         
         self.base_learners = []        
         """a list of base learner candidates for constructing the ensemble"""   
