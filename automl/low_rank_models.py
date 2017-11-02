@@ -18,7 +18,7 @@ def pca(A):
     Sigma_sqrt = np.diag(np.sqrt(s))
     X = np.matrix.transpose(np.dot(U, Sigma_sqrt))
     Y = np.dot(np.dot(Sigma_sqrt, Vt), np.diag(col_stdev))
-    return X,Y
+    return X,Y,Vt
 
 def low_rank_approximation(A, a, known_indices):
       

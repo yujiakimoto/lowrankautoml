@@ -40,7 +40,7 @@ class ErrorMatrix:
         """calculate the approximate rank of the error matrix: defined as the number of singular values
         that are at least 3/100th of the largest singular value"""       
         
-        self.index_qr = lrm.pivoted_qr(self.values)
+        self.index_qr = lrm.pivoted_qr(lrm.pca(self.values, self.rank)[2])
         """indices of error matrix columns, sorted in order from most orthogonal to least"""        
         
         self.computed_indices = self.index_qr[0:self.rank]

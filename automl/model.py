@@ -68,7 +68,7 @@ class Model:
                 if self.hyperparameters['k'] == 1: num = 3
                 else: num = 5
             else: num = 10
-            scenario = Scenario({'run_obj': 'quality', 'runcount-limit': num, 'cs': cs, 'deterministic': 'true', 'memory_limit': None})
+            scenario = Scenario({'run_obj': 'quality', 'runcount-limit': num, 'cs': cs, 'deterministic': 'true',  'memory_limit': None})
             smac = SMAC(scenario=scenario, rng=np.random.RandomState(100), tae_runner=self.error_function)
             try:
                 incumbent = smac.optimize()
