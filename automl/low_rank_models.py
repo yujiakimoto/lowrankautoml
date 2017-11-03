@@ -22,7 +22,7 @@ def pca(A):
 
 def low_rank_approximation(A, a, known_indices):
       
-    X,Y = pca(A)       
+    X,Y,_ = pca(A)       
     # find x using matrix division using known portion of a, corresponding columns of A
     x = np.matrix.transpose(np.linalg.lstsq(np.matrix.transpose(Y[:,known_indices]), np.matrix.transpose(a[:,known_indices]))[0])
   
