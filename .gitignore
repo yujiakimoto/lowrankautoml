@@ -9,3 +9,5 @@ analysis/.ipynb_checkpoints/random_QR-checkpoint.ipynb
 analysis/.ipynb_checkpoints/rank_sensitivity-checkpoint.ipynb
 analysis/columns.xlsx
 analysis/.ipynb_checkpoints/rank_sensitivity2-checkpoint.ipynb
+automl/__pycache__/low_rank_models.cpython-36.pyc
+*.pyc
