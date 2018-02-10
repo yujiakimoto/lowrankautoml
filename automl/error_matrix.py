@@ -61,8 +61,8 @@ class ErrorMatrix:
         """the number of cores to use per autolearner object"""
     
     def generate_settings(self, i):
-        settings = {'algorithm':self.headings[0][i], 
-                        'hyperparameters':{self.headings[1][i][j]:self.headings[2][i][j] for j in range(len(self.headings[1][i]))}}
+        settings = {'algorithm': self.headings[0][i],
+                    'hyperparameters': {self.headings[1][i][j]: self.headings[2][i][j] for j in range(len(self.headings[1][i]))}}
         if list(settings['hyperparameters'].keys())[0] == '':
                 settings['hyperparameters'] = {}
         return settings
@@ -73,20 +73,23 @@ class ErrorMatrix:
         a1 = [p1.apply_async(self.compute_entry, args=[train_features, train_labels, i]) for i in self.computed_indices]
         p1.close()
         p1.join()
-        for i in range(len(self.computed_indices)):
-            self.new_row[0, self.computed_indices[i]] = a1[i].get().error
+        for i, idx in enumerate(self.computed_indices):
+            self.new_row[0, self.idx] = a1[i].get().error
+
         approx_row = lrm.low_rank_approximation(self.values, self.new_row, self.computed_indices)
         unknown = np.setdiff1d(np.arange(self.values.shape[1]), self.computed_indices)
-        self.new_row[:,unknown] = approx_row[:,unknown]
+        self.new_row[:, unknown] = approx_row[:, unknown]
         candidate_indices = self.new_row.argsort()[0][:5]
         p2 = mp.Pool(self.n_cores)
         a2 = [p2.apply_async(self.compute_entry, args=(train_features, train_labels, i)) for i in candidate_indices if
-             i not in self.computed_indices]
-        for i in range(len(a2)):
-            self.new_row[0, candidate_indices[i]] = a2[i].get().error
+              i not in self.computed_indices]
+
+        for i, pool in enumerate(a2):
+            self.new_row[0, candidate_indices[i]] = pool.get().error
+
         approx_row = lrm.low_rank_approximation(self.values, self.new_row, np.union1d(self.computed_indices, candidate_indices))
         unknown = np.setdiff1d(np.arange(self.values.shape[1]), np.union1d(self.computed_indices, candidate_indices))
-        self.new_row[:,unknown] = approx_row[:,unknown]
+        self.new_row[:, unknown] = approx_row[:, unknown]
         p2.close()
         p2.join()
             
