@@ -3,7 +3,7 @@ from ensemble import Ensemble
 from model import Model
 import multiprocessing as mp
 import numpy as np
-import time
+
 
 class AutoLearner:
     

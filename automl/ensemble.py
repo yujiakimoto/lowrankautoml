@@ -4,6 +4,7 @@ import multiprocessing as mp
 import numpy as np
 from pathos.multiprocessing import ProcessingPool as Pool
 
+
 class Ensemble:
     
     def __init__(self, ensemble_size, ensemble_method, verbose, n_cores):

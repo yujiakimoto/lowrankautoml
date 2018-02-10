@@ -11,6 +11,7 @@ import numpy as np
 import multiprocessing as mp
 from scipy.linalg import qr
 
+
 class ErrorMatrix:
     
     def __init__(self, selected_algorithms, selected_hyperparameters, ensemble_size, error_matrix_values, verbose, n_cores):
@@ -23,7 +24,7 @@ class ErrorMatrix:
         if selected_algorithms == 'all':
             self.selected_algorithms = all_algs
         
-        if self.values_default == False:
+        if not self.values_default:
             self.values = error_matrix_values
             """if error matrix values are given, use given values"""
         else:
