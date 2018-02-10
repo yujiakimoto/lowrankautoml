@@ -1,18 +1,36 @@
+#Caution: specify your OpenML apikey in line 20 before running this file
+#usage: in terminal, type `python preprocess_openml_dataset.py $(OPENML ID)`
+
+import numpy as np
+import scipy as sp
 import scipy.sparse as sps
+
+import openml
+import random
+import pandas as pd
+import sys
+
+# Preprocessing modules from sklearn
 from sklearn.preprocessing import scale
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.preprocessing import Imputer
 
 
-#Categorical: a boolean array indicating which feature is categorical
-#bool_Imputer, bool_Standardization and bool_OneHotEncoder: boolean variables indicating whether to perform this type of data preprocessing method or not
+apikey_in_use = YOUR_APIKEY
+openml.config.apikey = apikey_in_use
 
+dataset_id = sys.argv[1]
+
+#Arguments:
+#Data_numeric: an n-by-d numpy array corresponding to n datapoints and d features
+#Categorical: a d-dimensional boolean array indicating whether each feature is categorical
+#bool_Imputer: whether to do imputation
+#bool_Standardization: whether to do standardization
+#bool_OneHotEncoder: whether to do one-hot-encoding
 
 def DataPreprocessing(Data_numeric, Categorical, bool_Imputer=True, bool_Standardization=True, bool_OneHotEncoder=True):
     
-    if sps.issparse(Data_numeric):
-        Data_numeric = Data_numeric.todense()
-
+    #whether to impute missing entries
     if bool_Imputer:
         # whether there exist categorical features
         bool_cat = bool(np.sum(np.isfinite(np.where(np.asarray(Categorical)==True))))
@@ -22,8 +40,8 @@ def DataPreprocessing(Data_numeric, Categorical, bool_Imputer=True, bool_Standar
         
         if bool_cat:
             # categorical features
-            Data_numeric_cat = Data_numeric[:,Categorical]
-            # imputer for missing entries
+            Data_numeric_cat = Data_numeric[:, Categorical]
+            # impute missing entries in categorical features using the most frequent number
             imp_cat = Imputer(missing_values='NaN', strategy='most_frequent', axis=0, copy=False)
             imp_cat.fit(Data_numeric_cat)
             Data_numeric_cat = imp_cat.transform(Data_numeric_cat)
@@ -31,28 +49,28 @@ def DataPreprocessing(Data_numeric, Categorical, bool_Imputer=True, bool_Standar
             num_cat = Data_numeric_cat.shape[1]
         
         
-        if bool_noncat:
-            
+        if bool_noncat:            
             #noncategorical features
             Data_numeric_noncat = Data_numeric[:,np.invert(Categorical)]
+            #impute missing entries in non-categorical features using mean
             imp_noncat = Imputer(missing_values='NaN', strategy='mean', axis=0, copy=False)
             imp_noncat.fit(Data_numeric_noncat)
             Data_numeric_noncat = imp_noncat.transform(Data_numeric_noncat)
             #number of noncategorical features
             num_noncat = Data_numeric_noncat.shape[1]
-
-        #true if there exist both categorical and noncategorical features
+        
+        #whether there exist both categorical and noncategorical features
         if bool_cat*bool_noncat:
             
             Data_numeric = np.concatenate((Data_numeric_cat, Data_numeric_noncat), axis=1)
             Categorical = [True for i in range(num_cat)] + [False for i in range(num_noncat)]
-
-        #true if there only exist categorical features
+        
+        #whether there are only categorical features
         elif bool_cat*(not bool_noncat):
             Data_numeric = Data_numeric_cat
             Categorical = [True for i in range(num_cat)]
-            
-        #true if there only exist noncategorical features
+        
+        #whether there are only noncategorical features
         elif (not bool_cat)*bool_noncat:
             Data_numeric = Data_numeric_noncat
             Categorical = [False for i in range(num_noncat)]
@@ -77,3 +95,18 @@ def DataPreprocessing(Data_numeric, Categorical, bool_Imputer=True, bool_Standar
 
     print("DataPreprocessing finished")
     return Data_numeric, Categorical
+
+
+dataset=openml.datasets.get_dataset(dataset_id)
+data_numeric,data_labels,categorical = dataset.get_data(target=dataset.default_target_attribute,return_categorical_indicator=True)
+
+if sps.issparse(data_numeric):
+    data_numeric=data_numeric.todense()
+
+#doing imputation and standardization and not doing one-hot-encoding achieves optimal empirical performances (smallest classification error) on a bunch of OpenML datasets
+data_numeric, categorical = DataPreprocessing(Data_numeric=data_numeric, Categorical=categorical, bool_Imputer=True, bool_Standardization=True, bool_OneHotEncoder=False)
+
+#the output is a preprocessed dataset with all the columns except the last one being preprocessed features, and the last column being labels
+dat = np.append(data_numeric, np.array(data_labels, ndmin=2).T,axis=1)
+
+np.savetxt(fname='dataset_'+dataset_id+'_preprocessed.csv', X=dat, delimiter=',')

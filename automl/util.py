@@ -89,6 +89,33 @@ def generate_headings(selected_algorithms, selected_hyperparameters):
                     
         return [alg_types, hyperparameter_names, hyperparameter_values]
 
+#generate the setting of the ith model in headings list
+def generate_setting_single_model(HEADINGS, i):
+    
+    single_model_setting = {'algorithm':HEADINGS[0][i], 'hyperparameters':{HEADINGS[1][i][j]:HEADINGS[2][i][j] for j in range(len(HEADINGS[1][i]))}}
+    
+    if list(single_model_setting['hyperparameters'].keys())[0] == '':
+        single_model_setting['hyperparameters'] = {}
+    
+    return single_model_setting
+
+
+#generate the setting of the ith model in headings list
+def generate_settings(HEADINGS):
+    
+    settings = []
+    
+    for i in range(len(HEADINGS[0][i])):
+        
+        single_model_setting = {'algorithm':HEADINGS[0][i], 'hyperparameters':{HEADINGS[1][i][j]:HEADINGS[2][i][j] for j in range(len(HEADINGS[1][i]))}}
+        
+        if list(single_model_setting['hyperparameters'].keys())[0] == '':
+            single_model_setting['hyperparameters'] = {}
+        
+        settings.append(single_model_setting)
+    
+    return settings
+
 
 # generate the setting of the ith model in headings list
 def generate_setting_single_model(HEADINGS, i):
