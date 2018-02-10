@@ -64,6 +64,7 @@ class Model:
         else:
             cs = ConfigurationSpace()
             cs.add_hyperparameters(list(getattr(util, self.algorithm + '_range')(self.hyperparameters).values()))
+            #set runcount-limit in Bayesian optimization
             if self.algorithm == 'kNN':
                 if self.hyperparameters['k'] == 1: num = 3
                 else: num = 5
