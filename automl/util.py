@@ -2,6 +2,9 @@ import numpy as np
 from itertools import product
 from ConfigSpace.hyperparameters import CategoricalHyperparameter, UniformFloatHyperparameter, UniformIntegerHyperparameter
 
+#whether to optimize the models' hyperparameters over the entire ranges given by the columns
+WIDE_HYPERPARAMETER_RANGE = True
+
 
 def generate_headings(selected_algorithms, selected_hyperparameters):
         """generate headings of error matrix
@@ -14,7 +17,7 @@ def generate_headings(selected_algorithms, selected_hyperparameters):
             being the hyperparameter value corresponding to that column.
 
         """
-        
+
         alg_types, hyperparameter_names, hyperparameter_values = [], [], []
 
         all_algorithms = ['kNN', 'CART', 'GB', 'lSVM', 'kSVM', 'Logit', 'Percep', 'GNB', 'MNB', 'RF', 'ExtraTrees', 'ABT', 'MLP']
@@ -59,6 +62,12 @@ def generate_headings(selected_algorithms, selected_hyperparameters):
         # how many hyperparameters does each of the selected algorithm have
         num_hyperparams_alg = [len(list(selected_hyperparameters[i].keys())) for i in range(num_alg_types)]
         # how many cases does each of the hyperparameter settings have
+
+        if selected_hyperparameters == 'default':
+            selected_hyperparameters = np.array(all_hyperparameters)[np.in1d(np.array(all_algorithms), np.array(selected_algorithms))]
+            
+        num_alg_types = len(selected_algorithms)
+        num_hyperparams_alg = [len(list(selected_hyperparameters[i].keys())) for i in range(num_alg_types)]
         num_settings_hyp_alg = [[len(selected_hyperparameters[i][list(selected_hyperparameters[i].keys())[j]]) 
                                  for j in range(num_hyperparams_alg[i])] for i in range(num_alg_types)]
 
@@ -77,8 +86,7 @@ def generate_headings(selected_algorithms, selected_hyperparameters):
                     alg_types.append(selected_algorithms[i])
                     hyperparameter_names.append(tuple(selected_hyperparameters[i].keys()))
                     hyperparameter_values.append(tuple((list(product(*list(selected_hyperparameters[i].values())))[k])))
-
-        print(len(hyperparameter_names))
+                    
         return [alg_types, hyperparameter_names, hyperparameter_values]
 
 
@@ -110,48 +118,75 @@ def generate_settings(HEADINGS):
     return settings
 
 
-# ranges of hyperparameter optimization
-
-def kNN_range(hyperparameters):
-    return {'k': UniformIntegerHyperparameter('k', max(1, hyperparameters['k']-2), hyperparameters['k']+2, default=hyperparameters['k'])}
-
-
-def CART_range(hyperparameters):
-    return {'min_samples_split': UniformFloatHyperparameter('min_samples_split', 0.1*hyperparameters['min_samples_split'], 10*hyperparameters['min_samples_split'], default=hyperparameters['min_samples_split'])}
+if WIDE_HYPERPARAMETER_RANGE:
+    def kNN_range(hyperparameters):        
+        return {'k': UniformIntegerHyperparameter('k', max(1, hyperparameters['k']-2), max(all_hyperparameters[all_algorithms.index('kNN')]['k']), default_value=hyperparameters['k'])}
 
 
-def RF_range(hyperparameters):
-     return {'min_samples_split': UniformFloatHyperparameter('min_samples_split', 0.1*hyperparameters['min_samples_split'], 10*hyperparameters['min_samples_split'], default=hyperparameters['min_samples_split'])}
+    def CART_range(hyperparameters):
+        return {'min_samples_split': UniformFloatHyperparameter('min_samples_split', min(all_hyperparameters[all_algorithms.index('CART')]['min_samples_split']), max(all_hyperparameters[all_algorithms.index('CART')]['min_samples_split']), default_value=hyperparameters['min_samples_split'])}
+
+    def RF_range(hyperparameters):
+        return {'min_samples_split': UniformFloatHyperparameter('min_samples_split', min(all_hyperparameters[all_algorithms.index('RF')]['min_samples_split']), max(all_hyperparameters[all_algorithms.index('RF')]['min_samples_split']), default_value=hyperparameters['min_samples_split'])}
+
+    def ExtraTrees_range(hyperparameters):
+        return {'min_samples_split': UniformFloatHyperparameter('min_samples_split', min(all_hyperparameters[all_algorithms.index('RF')]['min_samples_split']), max(all_hyperparameters[all_algorithms.index('RF')]['min_samples_split']), default_value=hyperparameters['min_samples_split'])}
 
 
-def ExtraTrees_range(hyperparameters):
-    return {'min_samples_split': UniformFloatHyperparameter('min_samples_split', 0.1*hyperparameters['min_samples_split'], 10*hyperparameters['min_samples_split'], default=hyperparameters['min_samples_split'])}
+    def GB_range(hyperparameters): 
+        return {'learning_rate': UniformFloatHyperparameter('learning_rate', min(all_hyperparameters[all_algorithms.index('GB')]['learning_rate']), max(all_hyperparameters[all_algorithms.index('GB')]['learning_rate']), default_value=hyperparameters['learning_rate'])}
+
+    def lSVM_range(hyperparameters):  
+        return {'C': UniformFloatHyperparameter('C', min(all_hyperparameters[all_algorithms.index('lSVM')]['C']), max(all_hyperparameters[all_algorithms.index('lSVM')]['C']), default_value=hyperparameters['C'])}
+
+    def kSVM_range(hyperparameters):  
+        return {'C': UniformFloatHyperparameter('C', min(all_hyperparameters[all_algorithms.index('kSVM')]['C']), max(all_hyperparameters[all_algorithms.index('kSVM')]['C']), default_value=hyperparameters['C'])}
+
+    def Logit_range(hyperparameters):
+        return {'C': UniformFloatHyperparameter('C', min(all_hyperparameters[all_algorithms.index('Logit')]['C']), max(all_hyperparameters[all_algorithms.index('Logit')]['C']), default_value=hyperparameters['C'])}
+
+    def Perceptron_range(hyperparameters):
+        return {}
+
+    def Adaboost_range(hyperparameters):
+        return {'n_estimators': UniformIntegerHyperparameter('n_estimators', int(min(all_hyperparameters[all_algorithms.index('Adaboost')]['n_estimators'])), int(max(all_hyperparameters[all_algorithms.index('Adaboost')]['n_estimators'])), default_value=int(hyperparameters['n_estimators'])),
+               'learning_rate': UniformFloatHyperparameter('learning_rate', min(all_hyperparameters[all_algorithms.index('Adaboost')]['learning_rate']), max(all_hyperparameters[all_algorithms.index('Adaboost')]['learning_rate']), default_value=hyperparameters['learning_rate'])}
+
+    def GNB_range(hyperparameters):
+        return {}
 
 
-def GB_range(hyperparameters):
-    return {'learning_rate': UniformFloatHyperparameter('learning_rate', 0.1*hyperparameters['learning_rate'], 10*hyperparameters['learning_rate'], default=hyperparameters['learning_rate'])}
+else:
+    def kNN_range(hyperparameters):
+        return {'k': UniformIntegerHyperparameter('k', max(1, hyperparameters['k']-2), hyperparameters['k']+2, default=hyperparameters['k'])}
 
+    def CART_range(hyperparameters):
+        return {'min_samples_split': UniformFloatHyperparameter('min_samples_split', 0.1*hyperparameters['min_samples_split'], 10*hyperparameters['min_samples_split'], default=hyperparameters['min_samples_split'])}
 
-def lSVM_range(hyperparameters):
-    return {'C': UniformFloatHyperparameter('C', 0.5*hyperparameters['C'], 2*hyperparameters['C'], default=hyperparameters['C'])}
+    def RF_range(hyperparameters):
+         return {'min_samples_split': UniformFloatHyperparameter('min_samples_split', 0.1*hyperparameters['min_samples_split'], 10*hyperparameters['min_samples_split'], default=hyperparameters['min_samples_split'])}
 
+    def ExtraTrees_range(hyperparameters):
+        return {'min_samples_split': UniformFloatHyperparameter('min_samples_split', 0.1*hyperparameters['min_samples_split'], 10*hyperparameters['min_samples_split'], default=hyperparameters['min_samples_split'])}
 
-def kSVM_range(hyperparameters):
-    return {'C': UniformFloatHyperparameter('C', 0.5*hyperparameters['C'], 2*hyperparameters['C'], default=hyperparameters['C'])}
+    def GB_range(hyperparameters):
+        return {'learning_rate': UniformFloatHyperparameter('learning_rate', 0.1*hyperparameters['learning_rate'], 10*hyperparameters['learning_rate'], default=hyperparameters['learning_rate'])}
 
+    def lSVM_range(hyperparameters):
+        return {'C': UniformFloatHyperparameter('C', 0.5*hyperparameters['C'], 2*hyperparameters['C'], default=hyperparameters['C'])}
 
-def Logit_range(hyperparameters):
-    return {'C': UniformFloatHyperparameter('C', 0.5*hyperparameters['C'], 2*hyperparameters['C'], default=hyperparameters['C'])}
+    def kSVM_range(hyperparameters):
+        return {'C': UniformFloatHyperparameter('C', 0.5*hyperparameters['C'], 2*hyperparameters['C'], default=hyperparameters['C'])}
 
+    def Logit_range(hyperparameters):
+        return {'C': UniformFloatHyperparameter('C', 0.5*hyperparameters['C'], 2*hyperparameters['C'], default=hyperparameters['C'])}
 
-def Perceptron_range(hyperparameters):
-    return {}
+    def Perceptron_range(hyperparameters):
+        return {}
 
+    def Adaboost_range(hyperparameters):
+        return {'n_estimators': UniformIntegerHyperparameter('n_estimators', int(0.5*hyperparameters['n_estimators']), int(2*hyperparameters['n_estimators']), default=int(hyperparameters['n_estimators'])),
+               'learning_rate': UniformFloatHyperparameter('learning_rate', 0.5*hyperparameters['learning_rate'], 2*hyperparameters['learning_rate'], default=hyperparameters['learning_rate'])}
 
-def Adaboost_range(hyperparameters):
-    return {'n_estimators': UniformIntegerHyperparameter('n_estimators', int(0.5*hyperparameters['n_estimators']), int(2*hyperparameters['n_estimators']), default=int(hyperparameters['n_estimators'])),
-           'learning_rate': UniformFloatHyperparameter('learning_rate', 0.5*hyperparameters['learning_rate'], 2*hyperparameters['learning_rate'], default=hyperparameters['learning_rate'])}
-
-
-def GNB_range(hyperparameters):
-    return {}
+    def GNB_range(hyperparameters):
+        return {}
