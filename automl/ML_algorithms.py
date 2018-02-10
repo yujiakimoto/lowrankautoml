@@ -13,6 +13,8 @@ from sklearn.ensemble import AdaBoostClassifier
 from sklearn.linear_model import Perceptron as PerceptronClf
 from sklearn.model_selection import KFold
 
+RANDOM_STATE = 0
+
 # Error calculator for class average for each fold
 def error_calc(test_labels, predictions):
     error = []
@@ -48,7 +50,7 @@ def error_calc(test_labels, predictions):
 def kfolderror(data_numeric, data_labels, clf, num_splits):
     Error_Aver = 0
     Predictions=np.zeros(shape=data_labels.shape)
-    kf = KFold(n_splits=num_splits, shuffle=True)
+    kf = KFold(n_splits=num_splits, shuffle=True, random_state=RANDOM_STATE)
     for train, test in kf.split(data_numeric):
         X_train=data_numeric[train,:]
         Y_train=data_labels[train]
@@ -70,7 +72,7 @@ def kNN(data_numeric, data_labels, num_splits=10, k=5, Error_type='ClassAverage'
     return Error_Aver, Predictions, clf
     
 def CART(data_numeric, data_labels, min_samples_split=2, num_splits=10, Error_type='ClassAverage', verbose=True):
-    clf = DecisionTreeClassifier(min_samples_split=min_samples_split)
+    clf = DecisionTreeClassifier(min_samples_split=min_samples_split, random_state=RANDOM_STATE)
     Error_Aver, Predictions = kfolderror(data_numeric, data_labels, clf, num_splits)
     if verbose:
         print("CART finished (", min_samples_split, ")" + str(data_numeric.shape))
@@ -79,10 +81,7 @@ def CART(data_numeric, data_labels, min_samples_split=2, num_splits=10, Error_ty
 def RF(data_numeric, data_labels, min_samples_split=2, num_splits=10,\
                  num_trees=100,num_jobs=1,type_num_features='sqrt',Error_type='ClassAverage', verbose=True):
 
-    clf = RandomForestClassifier(n_estimators=num_trees,
-                                 min_samples_split=min_samples_split,
-                                 max_features=type_num_features,
-                                 n_jobs=num_jobs)
+    clf = RandomForestClassifier(n_estimators=num_trees, min_samples_split=min_samples_split,  max_features=type_num_features, n_jobs=num_jobs, random_state=RANDOM_STATE)
      
     Error_Aver,Predictions = kfolderror(data_numeric, data_labels, clf, num_splits)
     if verbose:
@@ -91,7 +90,7 @@ def RF(data_numeric, data_labels, min_samples_split=2, num_splits=10,\
     
 
 def Perceptron(data_numeric, data_labels, num_splits=10, num_iter=5, penalty=None, Error_type='ClassAverage', verbose=True):
-    clf = PerceptronClf(penalty=penalty, n_iter=num_iter)
+    clf = PerceptronClf(penalty=penalty, n_iter=num_iter, random_state=RANDOM_STATE)
     Error_Aver, Predictions = kfolderror(data_numeric, data_labels, clf, num_splits)
     if verbose:
         print("Perceptron finished " +  str(data_numeric.shape))
@@ -99,7 +98,7 @@ def Perceptron(data_numeric, data_labels, num_splits=10, num_iter=5, penalty=Non
 
 def Adaboost(data_numeric, data_labels, n_estimators=50, learning_rate=1.0, num_splits=10, Error_type='ClassAverage', verbose=True):
 
-    clf = AdaBoostClassifier(n_estimators=n_estimators, learning_rate=learning_rate)
+    clf = AdaBoostClassifier(n_estimators=n_estimators, learning_rate=learning_rate, random_state=RANDOM_STATE)
     Error_Aver, Predictions = kfolderror(data_numeric, data_labels, clf, num_splits)
     if verbose:
         print("Adaboost finished (", n_estimators, learning_rate, ")"+  str(data_numeric.shape))
@@ -115,7 +114,7 @@ def GNB(data_numeric, data_labels, num_splits=10, Error_type='ClassAverage', ver
 
 def GB(data_numeric, data_labels, learning_rate=0.1, num_splits=10, Error_type='ClassAverage', verbose=True): 
     
-    clf = GradientBoostingClassifier(n_estimators=100, learning_rate=learning_rate, random_state=0)
+    clf = GradientBoostingClassifier(n_estimators=100, learning_rate=learning_rate, random_state=RANDOM_STATE)
     Error_Aver, Predictions = kfolderror(data_numeric, data_labels, clf, num_splits)
     if verbose:
         print("GradientBoosting finished (", learning_rate, ")" +str(data_numeric.shape))
@@ -123,7 +122,7 @@ def GB(data_numeric, data_labels, learning_rate=0.1, num_splits=10, Error_type='
 
 def lSVM(data_numeric, data_labels, C=1.0, num_splits=10, Error_type='ClassAverage', verbose=True):
 
-    clf = LinearSVC(C=C,multi_class='ovr')
+    clf = LinearSVC(C=C,multi_class='ovr', random_state=RANDOM_STATE)
     Error_Aver, Predictions = kfolderror(data_numeric, data_labels, clf, num_splits)
     if verbose:
         print("LinearSVM finished (", C, ")"+  str(data_numeric.shape))
@@ -131,7 +130,7 @@ def lSVM(data_numeric, data_labels, C=1.0, num_splits=10, Error_type='ClassAvera
 
 def kSVM(data_numeric, data_labels, C=1.0, num_splits=10, Kernel='rbf', Error_type='ClassAverage', verbose=True):
 
-    clf = SVC(C=C,decision_function_shape='ovo',kernel=Kernel)
+    clf = SVC(C=C,decision_function_shape='ovo',kernel=Kernel, random_state=RANDOM_STATE)
     Error_Aver, Predictions = kfolderror(data_numeric, data_labels, clf, num_splits)
     if verbose:
         print("KernelSVM finished (", C, ")"+  str(data_numeric.shape))
@@ -139,7 +138,7 @@ def kSVM(data_numeric, data_labels, C=1.0, num_splits=10, Kernel='rbf', Error_ty
 
 def Logit(data_numeric, data_labels, C=1.0, num_splits=10, penalty='l2', Error_type='ClassAverage', verbose=True):
  
-    clf = LogisticRegression(C=C, penalty=penalty)
+    clf = LogisticRegression(C=C, penalty=penalty, random_state=RANDOM_STATE)
     Error_Aver, Predictions = kfolderror(data_numeric, data_labels, clf, num_splits)
     if verbose:
         print("Logit finished (", C, ")"+  str(data_numeric.shape))
@@ -148,7 +147,7 @@ def Logit(data_numeric, data_labels, C=1.0, num_splits=10, penalty='l2', Error_t
 def NeuralNet(data_numeric, data_labels, num_splits=10, Solver='sgd',\
                   Alpha=1e-5,Hidden_layer_sizes=(5, 2), Random_state=1,Error_type='ClassAverage', verbose=True):
 
-    clf = MLPClassifier(solver=Solver, alpha=Alpha,hidden_layer_sizes=Hidden_layer_sizes, random_state=Random_state)
+    clf = MLPClassifier(solver=Solver, alpha=Alpha,hidden_layer_sizes=Hidden_layer_sizes, random_state=RANDOM_STATE)
     Error_Aver, Predictions = kfolderror(data_numeric, data_labels, clf, num_splits)
     if verbose:
         print("Neural Network finished"+  str(data_numeric.shape))
