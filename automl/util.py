@@ -51,9 +51,9 @@ def generate_headings(selected_algorithms, selected_hyperparameters):
         elif selected_algorithms == 'less':
             selected_algorithms = less_algorithms       # small error matrix
 
-        if selected_hyperparameters == 'default':       # hyperparameters of large error matrix
+        if selected_hyperparameters == 'default':       # hyperparameters of the large error matrix
             selected_hyperparameters = np.array(all_hyperparameters)[np.in1d(np.array(all_algorithms), np.array(selected_algorithms))]
-        elif selected_hyperparameters == 'less':
+        elif selected_hyperparameters == 'less':        # hyperparameters of the small error matrix
             selected_hyperparameters = np.array(less_hyperparameters)[np.in1d(np.array(less_algorithms), np.array(selected_algorithms))]
 
 
