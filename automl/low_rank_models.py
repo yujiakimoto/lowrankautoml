@@ -23,7 +23,6 @@ def pca(A, threshold=0.03):
     return X, Y, Vt
 
 
-# TODO: change to non-negative matrix factorization (?)
 def low_rank_approximation(A, a, known_indices, threshold=0.03):
       
     X, Y, _ = pca(A, threshold=threshold)
