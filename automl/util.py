@@ -3,7 +3,7 @@ import numpy as np
 from itertools import product
 from ConfigSpace.hyperparameters import CategoricalHyperparameter, UniformFloatHyperparameter, UniformIntegerHyperparameter
 
-#whether to optimize the models' hyperparameters over the entire ranges given by the columns
+# whether to optimize the models' hyperparameters over the entire ranges given by the columns
 WIDE_HYPERPARAMETER_RANGE = True
 
 
@@ -85,7 +85,8 @@ def generate_headings(selected_algorithms, selected_hyperparameters):
                     
         return [alg_types, hyperparameter_names, hyperparameter_values]
 
-#generate the setting of the ith model in headings list
+
+# generate the setting of the ith model in headings list
 def generate_setting_single_model(i):
     
     single_model_setting = {'algorithm':HEADINGS[0][i], 'hyperparameters':{HEADINGS[1][i][j]:HEADINGS[2][i][j] for j in range(len(HEADINGS[1][i]))}}

@@ -55,9 +55,11 @@ def error_calc(test_labels, predictions):
     error_np = np.array(error)
     return np.mean(error_np)
 
-#Error calculator for regression tasks (mean-squared error)
+
+# error calculation for regression tasks (mean-squared error)
 def error_calc_reg(test_values, predictions):
     return mean_squared_error(test_values, predictions)
+
 
 # returns the kfold CV error given data and classifier
 def kfolderror(data_numeric, data_labels, clf, num_splits, classification=True):
@@ -81,7 +83,7 @@ def kfolderror(data_numeric, data_labels, clf, num_splits, classification=True):
     return error_avg, predictions
 
 
-#classification algorithms
+# classification algorithms
 
 def kNN(data_numeric, data_labels, num_splits=10, k=5, p=2, verbose=True):
     clf = KNeighborsClassifier(n_neighbors=k, p=p)
@@ -177,12 +179,12 @@ def NeuralNet(data_numeric, data_labels, num_splits=10, solver='sgd', alpha=1e-5
         print("Neural Network finished (shape={})".format(data_numeric.shape))
     return error_avg, predictions, clf
 
-##regression algorithms
-#def Lasso(data_numeric, data_labels, num_splits=10, alpha=1.0, verbose=True):
-#    reg = Lasso(alpha=alpha, random_state=RANDOM_STATE)
-#    error_avg, predictions = kfolderror(data_numeric, data_labels, reg, num_splits, classification=False)
-#    if verbose:
-#        print("Lasso finished (shape={})".format(data_numeric.shape))
-#    return error_avg, predictions, clf
+# regression algorithms
+# def Lasso(data_numeric, data_labels, num_splits=10, alpha=1.0, verbose=True):
+#     reg = Lasso(alpha=alpha, random_state=RANDOM_STATE)
+#     error_avg, predictions = kfolderror(data_numeric, data_labels, reg, num_splits, classification=False)
+#     if verbose:
+#         print("Lasso finished (shape={})".format(data_numeric.shape))
+#     return error_avg, predictions, clf
 
 
