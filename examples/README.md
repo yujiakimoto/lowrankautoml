@@ -1,1 +1,1 @@
-This is the directory for examples.
+This is the directory for low rank automl demos.

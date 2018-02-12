@@ -3,6 +3,9 @@ from __future__ import print_function
 
 import numpy as np
 import scipy as sp
+
+from sklearn.metrics import mean_squared_error
+
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
@@ -14,6 +17,9 @@ from sklearn.neural_network import MLPClassifier
 from sklearn.naive_bayes import GaussianNB
 from sklearn.ensemble import AdaBoostClassifier
 from sklearn.linear_model import Perceptron as PerceptronClf
+
+from sklearn.linear_model import Lasso
+
 from sklearn.model_selection import KFold
 
 RANDOM_STATE = 0
@@ -49,9 +55,12 @@ def error_calc(test_labels, predictions):
     error_np = np.array(error)
     return np.mean(error_np)
 
+#Error calculator for regression tasks (mean-squared error)
+def error_calc_reg(test_values, predictions):
+    return mean_squared_error(test_values, predictions)
 
 # returns the kfold CV error given data and classifier
-def kfolderror(data_numeric, data_labels, clf, num_splits):
+def kfolderror(data_numeric, data_labels, clf, num_splits, classification=True):
     error_avg = 0
     predictions=np.zeros(shape=data_labels.shape)
     kf = KFold(n_splits=num_splits, shuffle=True, random_state=RANDOM_STATE)
@@ -62,15 +71,20 @@ def kfolderror(data_numeric, data_labels, clf, num_splits):
         y_test = data_labels[test]
         
         clf.fit(x_train, y_train)
-        predictions[test] = clf.predict(x_test)        
-        error_avg += error_calc(y_test, predictions[test])
+        predictions[test] = clf.predict(x_test)
+        if classification:
+            error_avg += error_calc(y_test, predictions[test])
+        else:
+            error_avg += error_calc_reg(y_test, predictions[test])
     
     error_avg = error_avg/num_splits
     return error_avg, predictions
-    
 
-def kNN(data_numeric, data_labels, num_splits=10, k=5, verbose=True):
-    clf = KNeighborsClassifier(n_neighbors=k)
+
+#classification algorithms
+
+def kNN(data_numeric, data_labels, num_splits=10, k=5, p=2, verbose=True):
+    clf = KNeighborsClassifier(n_neighbors=k, p=p)
     error_avg, predictions = kfolderror(data_numeric, data_labels, clf, num_splits)
     if verbose:
         print("kNN finished (k={}, shape={})".format(k, data_numeric.shape))
@@ -162,3 +176,13 @@ def NeuralNet(data_numeric, data_labels, num_splits=10, solver='sgd', alpha=1e-5
     if verbose:
         print("Neural Network finished (shape={})".format(data_numeric.shape))
     return error_avg, predictions, clf
+
+##regression algorithms
+#def Lasso(data_numeric, data_labels, num_splits=10, alpha=1.0, verbose=True):
+#    reg = Lasso(alpha=alpha, random_state=RANDOM_STATE)
+#    error_avg, predictions = kfolderror(data_numeric, data_labels, reg, num_splits, classification=False)
+#    if verbose:
+#        print("Lasso finished (shape={})".format(data_numeric.shape))
+#    return error_avg, predictions, clf
+
+

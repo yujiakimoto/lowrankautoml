@@ -3,7 +3,7 @@ from ensemble import Ensemble
 from model import Model
 import multiprocessing as mp
 import numpy as np
-
+import os
 
 class AutoLearner:
     
@@ -17,8 +17,8 @@ class AutoLearner:
         self.ensemble = Ensemble(ensemble_size, ensemble_method, verbose, n_cores)
         """instantiate empty ensemble object"""
         
-    def fit(self, train_features, train_labels, categorical):        
-        """fit the model to a given training feature and label"""
+    def fit(self, train_features, train_labels):
+        """fit the model to a given training feature (for now, no categorical features) and label"""
         # preprocessing
         self.error_matrix.add_dataset(train_features, train_labels)
         for model in self.error_matrix.best_algorithms(train_features, train_labels):
@@ -26,12 +26,15 @@ class AutoLearner:
         self.ensemble.bayesian_optimize()
         self.ensemble.fit_base_learners(train_features, train_labels)
         self.ensemble.fit_stacked_learner(train_features, train_labels)
+        os.system('rm -rf smac3-output*')
+
     
-    def refit(self, train_features, train_labels, categorical):
+    def refit(self, train_features, train_labels):
         """refits the autolearner object to a newly provided training set"""
         # preprocessing
         self.ensemble.fit_base_learners(train_features, train_labels)
         self.ensemble.fit_stacked_learner(train_features, train_labels)
+        os.system('rm -rf smac3-output*')
 
     def predict(self, test_features):
         """returns predictions of the autolearner object on newly provided test set"""
