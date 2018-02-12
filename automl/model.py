@@ -9,7 +9,7 @@ from smac.facade.smac_facade import SMAC
 
 class Model:
     
-    def __init__(self, settings={'algorithm':None, 'hyperparameters':None}, num_folds=10, verbose=True, train_features=None,
+    def __init__(self, settings={'algorithm':None, 'hyperparameters':None}, num_bayesian_optimize=10, num_folds=10, verbose=True, train_features=None,
                 train_labels=None):
         """instantiates a model object given an algorithm type, hyperparameter settings and
         a number of folds for cross validation"""
@@ -31,6 +31,9 @@ class Model:
         
         self.bayesian_optimized = False
         """whether or not the model's hyperparameters have been tuned"""
+        
+        self.num_bayesian_optimize = num_bayesian_optimize
+        """number of Bayesian optimization rounds for each base learner"""
         
         self.train_features = train_features
         self.train_labels = train_labels
@@ -68,7 +71,7 @@ class Model:
             if self.algorithm == 'kNN':
                 if self.hyperparameters['k'] == 1: num = 3
                 else: num = 5
-            else: num = 10
+            else: num = self.num_bayesian_optimize
             scenario = Scenario({'run_obj': 'quality', 'runcount-limit': num, 'cs': cs, 'deterministic': 'true',  'memory_limit': None})
             smac = SMAC(scenario=scenario, rng=np.random.RandomState(100), tae_runner=self.error_function)
             try:
