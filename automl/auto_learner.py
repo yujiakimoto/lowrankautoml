@@ -19,7 +19,7 @@ class AutoLearner:
         
     def fit(self, train_features, train_labels):
         """fit the model to a given training feature (for now, no categorical features) and label"""
-        # preprocessing
+        # no preprocessing for now
         self.error_matrix.add_dataset(train_features, train_labels)
         for model in self.error_matrix.best_algorithms(train_features, train_labels):
             self.ensemble.add_learner(model)
@@ -31,7 +31,7 @@ class AutoLearner:
     
     def refit(self, train_features, train_labels):
         """refits the autolearner object to a newly provided training set"""
-        # preprocessing
+        # no preprocessing for now
         self.ensemble.fit_base_learners(train_features, train_labels)
         self.ensemble.fit_stacked_learner(train_features, train_labels)
         os.system('rm -rf smac3-output*')
