@@ -86,7 +86,7 @@ def generate_headings(selected_algorithms, selected_hyperparameters):
         return [alg_types, hyperparameter_names, hyperparameter_values]
 
 
-# generate the setting of the ith model in headings list
+# generate the setting of the ith model in the list HEADINGS
 def generate_setting_single_model(i):
     
     single_model_setting = {'algorithm':HEADINGS[0][i], 'hyperparameters':{HEADINGS[1][i][j]:HEADINGS[2][i][j] for j in range(len(HEADINGS[1][i]))}}
@@ -96,7 +96,7 @@ def generate_setting_single_model(i):
     
     return single_model_setting
 
-
+# generate all settings of the models in the list HEADINGS
 def generate_settings(HEADINGS):
     
     settings = []
@@ -112,46 +112,15 @@ def generate_settings(HEADINGS):
     
     return settings
 
-#
-## generate the setting of the ith model in headings list
-#def generate_setting_single_model(i):
-#
-#    single_model_setting = {'algorithm':HEADINGS[0][i], 'hyperparameters':{HEADINGS[1][i][j]:HEADINGS[2][i][j] for j in range(len(HEADINGS[1][i]))}}
-#
-#    if list(single_model_setting['hyperparameters'].keys())[0] == '':
-#        single_model_setting['hyperparameters'] = {}
-#
-#    return single_model_setting
-#
-#
-## generate the setting of the ith model in headings list
-#def generate_settings(HEADINGS):
-#
-#    settings = []
-#
-#    for i in range(len(HEADINGS[0][i])):
-#
-#        single_model_setting = {'algorithm':HEADINGS[0][i], 'hyperparameters':{HEADINGS[1][i][j]:HEADINGS[2][i][j] for j in range(len(HEADINGS[1][i]))}}
-#
-#        if list(single_model_setting['hyperparameters'].keys())[0] == '':
-#            single_model_setting['hyperparameters'] = {}
-#
-#        settings.append(single_model_setting)
-#
-#    return settings
 
-
-
-
-
-
+#given a model with its algorithm and hyperparameter names specified, find the range of this hyperparameter within all the models at hand
 def get_hyperparameter_range(HEADINGS, algorithm_name, hyperparameter_name):
     algorithm_indices = np.in1d(HEADINGS[0], algorithm_name).nonzero()[0]
     hyperparameter_position = np.array(HEADINGS[1])[algorithm_indices][0].index(hyperparameter_name)
     hyperparameter_range = [hyperparameter_values[hyperparameter_position] for hyperparameter_values in np.array(HEADINGS[2])[algorithm_indices]]
     return hyperparameter_range
 
-
+#Whether to tune hyperparameters in the whole ranges corresponding to all the relevant columns. For example, if all the k values corresponding to kNN are {1, 3, 5, 7, 9}, then "wide" means we will tune k within the range of 1 to 9; "not wide" means we will only tune k within ±2 of k's initial value.
 if WIDE_HYPERPARAMETER_RANGE:
     def kNN_range(hyperparameters):
         hyperparameter_range = get_hyperparameter_range(HEADINGS, 'kNN', 'k')
