@@ -1,2 +1,3 @@
 # Low Rank Automated Machine Learning
-A framework for automated machine learning
+
+This project has moved to [https://github.com/udellgroup/lowrank-automl](https://github.com/udellgroup/lowrank-automl)
