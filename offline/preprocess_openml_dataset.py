@@ -109,4 +109,4 @@ data_numeric, categorical = DataPreprocessing(Data_numeric=data_numeric, Categor
 #the output is a preprocessed dataset with all the columns except the last one being preprocessed features, and the last column being labels
 dat = np.append(data_numeric, np.array(data_labels, ndmin=2).T,axis=1)
 
-np.savetxt(fname='dataset_'+dataset_id+'_preprocessed.csv', X=dat, delimiter=',')
+np.savetxt(fname='dataset_'+str(dataset_id)+'_preprocessed.csv', X=dat, delimiter=',')
